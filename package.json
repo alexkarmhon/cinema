@@ -1,0 +1,37 @@
+{
+  "name": "cinema",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://alexkarmhon.github.io/cinema",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /cinema/",
+    "server": "json-server db.json",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexkarmhon/cinema.git"
+  },
+  "author": "Olexii <89stigmat89@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexkarmhon/cinema/issues"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1",
+    "posthtml-include": "^1.7.4",
+    "sass": "^1.70.0"
+  },
+  "dependencies": {
+    "@pnotify/core": "^5.2.0",
+    "@pnotify/mobile": "^5.2.0",
+    "basiclightbox": "^5.0.4",
+    "firebase": "^10.7.2",
+    "gh-pages": "^6.1.1"
+  }
+}
