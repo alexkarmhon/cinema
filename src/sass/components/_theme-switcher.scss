@@ -1,0 +1,22 @@
+.theme-btn {
+  position: absolute;
+  top: -25px;
+  right: 0px;
+
+  height: 22px;
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background-color: inherit;
+  fill: rgb(253, 222, 84);
+}
+.theme-switch__icon{
+  width: 18px;
+  height: 18px;
+}
+
+.theme-switch__icon.moon {
+  position: relative;
+  right: 22px;
+}
