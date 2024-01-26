@@ -1,32 +1,36 @@
 const switcher = document.querySelector('#theme-btn');
 const body = document.querySelector('body');
-const iconPath = document.querySelector('#theme-icon-path');
+
+const sun = document.querySelector('#sun');
+const moon = document.querySelector('#moon');
 
 const { LIGHT, DARK } = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 
-const sun = './sprite.5ec50489.svg#icon-sun';
-const moon = './sprite.5ec50489.svg#icon-moon';
-
 let pageTheme = localStorage.getItem('page-theme') || LIGHT;
 body.classList.add(pageTheme);
-// iconPath.attributes.path.textContent = './sprite.5ec50489.svg#icon-sun',
-// iconPath.attributes.href.textContent = pageTheme === LIGHT ? sun : moon;
 
+if (pageTheme === LIGHT) {
+  sun.classList.remove('is-hidden');
+  moon.classList.add('is-hidden');
+}
+
+if (pageTheme === DARK) {
+  sun.classList.add('is-hidden');
+}
 
 
 function handlerSwitcher() {
   body.classList.toggle(LIGHT);
   body.classList.toggle(DARK);
-  
-  switcher.classList.toggle(LIGHT);
-  switcher.classList.toggle(DARK);
+
+  moon.classList.toggle('is-hidden');
+  sun.classList.toggle('is-hidden');
   
   pageTheme = pageTheme === LIGHT ? DARK : LIGHT;
   localStorage.setItem('page-theme', pageTheme);
-  iconPath.attributes.href.textContent = pageTheme === LIGHT ? sun : moon;
 }
 
 switcher.addEventListener('click', handlerSwitcher);
