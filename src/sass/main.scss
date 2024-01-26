@@ -2,9 +2,11 @@
 @import "./utils/visually-hidden";
 
 @import "./base/common";
-@import "./components/components";
 @import "./base/container";
 
-@import "./layouts/header";
+@import "./components/components";
+@import "./components/themes";
 @import "./components/theme-switcher";
-@import "./components/themes"
+
+@import "./layouts/header";
+@import "./layouts/filmListSection";

@@ -1,0 +1,21 @@
+{{!-- Шаблон картки --}}
+{{#each this}}
+  <li class="gallery__item">
+    <div class="gallery__card">
+      {{#if poster_path}}
+      <img class="gallery__image" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="{{original_title}}" data-source="{{id}}">
+      {{else}}
+      <img class="gallery__image" src="../images/coming-soon.jpg" alt="{{orginal_title}}">
+      {{/if}}
+      <div class="film-information">
+        <p class="film__name">{{title}}</>
+        <div class="film__advantages">
+          <p class="category">
+            <span>{{#each genre_ids}}{{this}}<span class="cut">,</span>{{/each}}</span>|{{release_date}}
+          </p>
+          <p class="votes">{{vote_average}}</p>
+        </div>
+      </div>
+    </div>
+  </li>
+{{/each}}
