@@ -8,11 +8,12 @@ const { LIGHT, DARK } = {
 };
 
 const sun = './sprite.5ec50489.svg#icon-sun';
-const moon = './sprite.5ec50489.svg#icon-moon'
+const moon = './sprite.5ec50489.svg#icon-moon';
 
 let pageTheme = localStorage.getItem('page-theme') || LIGHT;
 body.classList.add(pageTheme);
-iconPath.attributes.href.textContent = pageTheme === LIGHT ? sun : moon;
+// iconPath.attributes.path.textContent = './sprite.5ec50489.svg#icon-sun',
+// iconPath.attributes.href.textContent = pageTheme === LIGHT ? sun : moon;
 
 
 
