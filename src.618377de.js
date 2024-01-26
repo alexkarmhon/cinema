@@ -5,4 +5,4 @@ const e=document.querySelector("#theme-btn"),t=document.querySelector("body"),s=
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/theme-switcher.js");
 },{"./sass/main.scss":"clu1","./js/theme-switcher.js":"keXy"}]},{},["Focm"], null)
-//# sourceMappingURL=/cinema/src.b94cc164.js.map
+//# sourceMappingURL=/cinema/src.618377de.js.map
