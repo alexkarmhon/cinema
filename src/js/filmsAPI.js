@@ -10,24 +10,24 @@ export default class FilmsAPI {
     this.searchQuery = ''
   }
 
-  async getFilms() {
+  async fetchFilms() {
     const response = await fetch(`${BASE_URL}${END_POINT}?api_key=${API_KEY}&page=${this.page}`);
     const data = await response.json();
-    console.log(data);
+   
     return data;
   }
 
-  async getGenres() {
+  async fetchGenres() {
     const response = await fetch(`${BASE_URL}${GENRES_END_POINT}?api_key=${API_KEY}`);
     const {genres} = await response.json();
-    console.log(genres);
+    
     return genres;
   }
 
-  async findFilmByName() {
-    const response = await fetch(`${BASE_URL}${SEARCH_END_POINT}?api_key=${API_KEY}&q=${this.query}`);
+  async fetchFilmsByName() {
+    const response = await fetch(`${BASE_URL}${SEARCH_END_POINT}?api_key=${API_KEY}&query=${this.query}`);
     const data = await response.json();
-    console.log(data)
+   
     return data;
   }
 
@@ -47,7 +47,3 @@ export default class FilmsAPI {
     this.page = 1;
   }
 }
-
-const filmsApi = new FilmsAPI();
-filmsApi.getFilms();
-filmsApi.getGenres();

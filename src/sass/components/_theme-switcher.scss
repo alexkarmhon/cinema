@@ -1,9 +1,10 @@
 .theme-btn {
   @include flex-center;
   position: absolute;
-  top: -25px;
-  right: 10px;
+  top: -30px;
+  right: 20px;
 
+  display: block;
   height: 22px;
   padding: 0;
 
@@ -16,11 +17,6 @@
   display: block;
   width: 18px;
   height: 18px;
-  
-  
-  .is-hidden & {
-    display: none;
-  }
 }
 
 .theme-switch__icon.moon,

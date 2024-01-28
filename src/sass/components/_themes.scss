@@ -1,10 +1,11 @@
 body.light-theme {
-  background-color: var(--background-color);
+  color: var(--secondary-color);
   transition: all 350ms;
 }
 
 body.dark-theme {
   // background-color: #353e56;
   background: rgba(0, 0, 0, 0.9);
+  color: var(--primary-color);
   transition: all 350ms;
 }

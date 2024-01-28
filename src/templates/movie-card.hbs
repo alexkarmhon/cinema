@@ -8,10 +8,10 @@
       <img class="gallery__image" src="../images/coming-soon.jpg" alt="{{orginal_title}}">
       {{/if}}
       <div class="film-information">
-        <p class="film__name">{{title}}</>
+        <p class="film__name">{{title}}{{name}}</>
         <div class="film__advantages">
           <p class="category">
-            <span>{{#each genre_ids}}{{this}}<span class="cut">,</span>{{/each}}</span>|{{release_date}}
+            <span>{{#each genre_ids}}{{this}}<span class="cutter">, </span>{{/each}}</span> | {{release_date}}
           </p>
           <p class="votes">{{vote_average}}</p>
         </div>
