@@ -101,6 +101,6 @@ async function handlerFormInput(e) {
   loadMoreBtn.show();
 }
 
-// renderFilmsGallery();
+renderFilmsGallery();
 searchFormInput.addEventListener('submit', handlerFormInput);
 moreFilmsBtn.addEventListener('click', handlerMoreFilmsBtn);
