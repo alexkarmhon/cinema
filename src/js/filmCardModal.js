@@ -32,10 +32,7 @@ async function showFilmModal(e) {
     vote_count,
   } = parsedCards[0];
 
-  const instance = basicLightbox.create(`
-    <div class="movie-modal">
-      <button class='movie-modal__btn-close js-modal-close' aria-label='close'></button>
-    </div>`);
+  const instance = basicLightbox.create(movieCardTemplate(parsedCards[0]));
 
   instance.show();
 }
