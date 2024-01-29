@@ -31,4 +31,4 @@ var t,e=arguments[3];!function(e,n){"object"==typeof exports&&"undefined"!=typeo
 },{"./filmsAPI":"rqiq","../templates/movie-card.hbs":"WSZA","./load-more-btn":"vMqs","./pnotify":"fRfm"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/theme-switcher.js"),require("./js/filmsAPI.js"),require("./js/header.js"),require("./js/filmGallery.js");
 },{"./sass/main.scss":"clu1","./js/theme-switcher.js":"keXy","./js/filmsAPI.js":"rqiq","./js/header.js":"cGsR","./js/filmGallery.js":"VBuQ"}]},{},["Focm"], null)
-//# sourceMappingURL=/cinema/src.b7ce8a4f.js.map
+//# sourceMappingURL=/cinema/src.3beeaa8e.js.map
