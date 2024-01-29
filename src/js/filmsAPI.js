@@ -2,7 +2,9 @@ const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "2c427feded2caae0e1aa5b84b18ff5a9";
 const END_POINT = "trending/movie/day";
 const SEARCH_END_POINT = 'search/movie';
+const FIND_END_POINT = 'find/';
 const GENRES_END_POINT = 'genre/movie/list';
+// https://api.themoviedb.org/3/find/{external_id}
 
 export default class FilmsAPI {
   constructor() { 
@@ -27,7 +29,7 @@ export default class FilmsAPI {
   async fetchFilmsByName() {
     const response = await fetch(`${BASE_URL}${SEARCH_END_POINT}?api_key=${API_KEY}&query=${this.query}`);
     const data = await response.json();
-   
+    console.log(data);
     return data;
   }
 

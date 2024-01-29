@@ -2,6 +2,8 @@ import FilmsAPI from './filmsAPI';
 import movieCardTemplate from '../templates/movie-card.hbs';
 import LoadMoreBtn from './load-more-btn';
 import { errorMsg, emptyMovie } from './pnotify';
+import { showFilmModal } from './filmCardModal';
+import { parseGenresToFilm } from './functions';
 
 const filmList = document.querySelector('#film-list');
 const moreFilmsBtn = document.querySelector('#load-more-btn');
@@ -13,21 +15,7 @@ const loadMoreBtn = new LoadMoreBtn({
   hidden: true,
 });
 
-function parseGenresToFilm(arr, genres) {
-  const newObjArr = arr.map(el => ({
-    ...el,
-    release_date: el.release_date.slice(0, 4),
-    genre_ids: el.genre_ids.length
-      ? genres.reduce(
-          (acc, { id, name }) =>
-            el.genre_ids.includes(+id) && acc.length < 2 ? [...acc, name] : acc,
-          [],
-        )
-      : ['No genres'],
-  }));
 
-  return newObjArr;
-}
 
 async function renderFilmsGallery() {
   try {
@@ -104,3 +92,4 @@ async function handlerFormInput(e) {
 renderFilmsGallery();
 searchFormInput.addEventListener('submit', handlerFormInput);
 moreFilmsBtn.addEventListener('click', handlerMoreFilmsBtn);
+filmList.addEventListener('click', showFilmModal);
