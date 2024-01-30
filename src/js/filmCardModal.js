@@ -18,8 +18,6 @@ async function showFilmModal(e) {
   const genres = await filmsAPI.fetchGenres();
   const parsedCards = parseGenresToFilm(film, genres);
 
-  console.log(parsedCards[0]);
-
   const {
     genre_ids,
     original_language,
@@ -33,8 +31,12 @@ async function showFilmModal(e) {
   } = parsedCards[0];
 
   const instance = basicLightbox.create(movieCardTemplate(parsedCards[0]));
-
   instance.show();
+  document.querySelector('.js-modal-close').addEventListener('click', instance.close);
+  document.addEventListener('keydown', (e) => {
+    if (e.code !== 'Escape') return;
+    instance.close();
+  }, { once: true });
 }
 
 export { showFilmModal };
