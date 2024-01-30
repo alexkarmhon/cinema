@@ -1,0 +1,13 @@
+.trailer-modal {
+  position: relative;
+  height: max-content;
+  width: 280px;
+  padding: 48px 20px 40px 20px;
+
+  overflow: hidden;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+  background-color: #ffffff;
+  color: var(--secondary-color);
+}
+

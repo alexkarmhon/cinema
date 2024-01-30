@@ -52,10 +52,6 @@
   margin-bottom: 20px;
 }
 
-// .movie-modal__characteristics{
-
-// }
-
 .movie-modal__characteristic{
   display: flex;
   margin-bottom: 10px;
@@ -117,5 +113,46 @@
 }
 
 .movie-modal__buttons{
-  
+  display: flex;
+}
+
+.movie-modal__btn{
+  @include flex-center;
+  @include font(500, 12px, 16px, 0.03em);
+
+  max-width: 136px;
+  min-height: 44px;
+  flex-basis: calc(50% - 7.5px);
+  padding: 8px;
+
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  background-color: transparent;  
+
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  transition: color 250ms linear, background-color 250ms linear;
+
+  &--active {
+    margin-right: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+
+    color: var(--primary-color);
+  }
+
+  &:focus {
+    outline: 0px;
+  }
+
+  &:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: unset;
+  }
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
 }
