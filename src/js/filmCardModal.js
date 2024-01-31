@@ -6,37 +6,38 @@ import * as basicLightbox from 'basiclightbox';
 import '../../node_modules/basiclightbox/src/styles/main.scss';
 
 const filmsAPI = new FilmsAPI();
+let isTrailerModalOpen = false;
 
 async function showTrailer(e) {
   const filmId = e.target.dataset.id;
   const { results: movies } = await filmsAPI.fetchFilmsById(filmId);
-  const trailer = movies.find(
-    movie => movie.name === 'Official Trailer',
-  );
-  console.log(trailer);
+  const trailer = movies.find((movie) => movie.name.includes("Trailer"));
 
-  const trailerModal = basicLightbox.create(
-    trailerModalTemplate(trailer),
-  );
+  const trailerModal = basicLightbox.create(trailerModalTemplate(trailer), {
+    onShow() {
+      isTrailerModalOpen = true;
+      document.addEventListener("keydown", closeModal);
+    },
+    onClose() {
+      document.removeEventListener("keydown", closeModal);
+    },
+  });
   trailerModal.show();
 
-  document
-    .querySelector('.js-trailer-modal-close')
-    .addEventListener('click', trailerModal.close);
+  function closeModal(e) {
+    if (e.code === "Escape") {
+      isTrailerModalOpen = false;
+      trailerModal.close();
+    }
+  }
 
-  // document.addEventListener(
-  //   'keydown',
-  //   e => {
-  //     if (e.code !== 'Escape') return;
-  //     // trailerModal.close();
-  //     console.log(e.currentTarget)
-  //   },
-  //   // { once: true },
-  // );
+  document
+    .querySelector(".js-trailer-modal-close")
+    .addEventListener("click", trailerModal.close);
 }
 
 async function showFilmModal(e) {
-  const isCard = e.target.nodeName === 'IMG';
+  const isCard = e.target.nodeName === "IMG";
 
   if (!isCard) return;
   const value = e.target.attributes.alt.value;
@@ -47,26 +48,40 @@ async function showFilmModal(e) {
   const genres = await filmsAPI.fetchGenres();
   const parsedCards = parseGenresToFilm(film, genres);
 
-  const filmModal = basicLightbox.create(movieCardTemplate(parsedCards[0]));
+  const filmModal = basicLightbox.create(movieCardTemplate(parsedCards[0]), {
+    onShow() {
+      document.addEventListener("keydown", closeModal);
+    },
+    onClose() {
+      document.removeEventListener("keydown", closeModal);
+    },
+  });
+
   filmModal.show();
 
   document
-    .querySelector('.js-movie-modal-close')
-    .addEventListener('click', filmModal.close);
-  
+    .querySelector(".js-movie-modal-close")
+    .addEventListener("click", filmModal.close);
+
   document
     .querySelector('button[data-action="show-trailer"]')
-    .addEventListener('click', showTrailer);
-
-  document.addEventListener(
-    'keydown',
-    e => {
-      if (e.code !== 'Escape') return;
-      console.log(e.target)
-      filmModal.close();
-    },
-    { once: true },
-  );
+    .addEventListener("click", showTrailer);
+  
+  function closeModal(e) {
+      if (!isTrailerModalOpen && e.code === "Escape") {
+        filmModal.close();
+      }
+    }
 }
 
+
 export { showFilmModal };
+// handler: null,
+// onShow(filmModal) {
+//   this.handler = closeModal.bind(filmModal);
+//   window.addEventListener('keydown', this.handler);
+// },
+// onClose(filmModal) {
+//   this.handler = closeModal.bind(filmModal);
+//   window.removeEventListener('keydown', this.handler);
+// },

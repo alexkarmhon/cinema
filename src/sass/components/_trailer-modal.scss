@@ -3,6 +3,7 @@
   height: max-content;
   width: 280px;
   padding: 48px 20px 40px 20px;
+  margin-top: 20vh;
 
   overflow: hidden;
       -ms-overflow-style: none;
@@ -11,3 +12,6 @@
   color: var(--secondary-color);
 }
 
+.movie-modal__trailer {
+  width: 100%;
+}
