@@ -57,10 +57,11 @@ async function showFilmModal(e) {
     },
   });
 
+  
   filmModal.show();
-
+  
   document
-    .querySelector(".js-movie-modal-close")
+    .querySelector("button.movie-modal__btn-close")
     .addEventListener("click", filmModal.close);
 
   document
@@ -76,12 +77,3 @@ async function showFilmModal(e) {
 
 
 export { showFilmModal };
-// handler: null,
-// onShow(filmModal) {
-//   this.handler = closeModal.bind(filmModal);
-//   window.addEventListener('keydown', this.handler);
-// },
-// onClose(filmModal) {
-//   this.handler = closeModal.bind(filmModal);
-//   window.removeEventListener('keydown', this.handler);
-// },
