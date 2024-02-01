@@ -1,0 +1,21 @@
+.sign-out-btn {
+  @include flex-center;
+  @include font(500, 12px, 16px, 0.03em);
+  position:absolute;
+  top: -20px;
+  right: 40px;
+  padding: 0;
+
+  border: none;
+  outline: none;
+  background-color: inherit;
+  color: var(--exit-signout-color);
+  fill: var(--exit-signout-color);
+}
+
+.exit-icon{
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}

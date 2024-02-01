@@ -17,7 +17,7 @@ const loadMoreBtn = new LoadMoreBtn({
 
 
 
-async function renderFilmsGallery() {
+async function renderFilmsGalleryDefault() {
   try {
     const { results: films, total_results } = await filmsAPI.fetchFilms();
     const genres = await filmsAPI.fetchGenres();
@@ -65,6 +65,7 @@ async function renderFilmsGalleryByQuery() {
 function clearGallery() {
   filmList.innerHTML = '';
   searchFormInput.reset();
+  loadMoreBtn.hide();
 }
 
 function handlerMoreFilmsBtn() {
@@ -89,7 +90,10 @@ async function handlerFormInput(e) {
   loadMoreBtn.show();
 }
 
-renderFilmsGallery();
+renderFilmsGalleryDefault();
 searchFormInput.addEventListener('submit', handlerFormInput);
 moreFilmsBtn.addEventListener('click', handlerMoreFilmsBtn);
 filmList.addEventListener('click', showFilmModal);
+
+
+export { renderFilmsGalleryDefault, clearGallery };
