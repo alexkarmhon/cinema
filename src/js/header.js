@@ -1,4 +1,5 @@
 import { renderFilmsGalleryDefault, clearGallery } from "./filmGallery";
+import { authModalOpen, authModalClose } from "./authModal";
 
 
 const iconLink = document.querySelector('.icon-film');
@@ -34,6 +35,7 @@ function handlerLibraryBtn() {
   signOutBtn.classList.remove('visually-hidden');
   searchInput.classList.add('visually-hidden');
   headerLibBtns.classList.remove('visually-hidden');
+  authModalOpen();
 }
 
 function handlerSignOutBtn() {
@@ -45,3 +47,5 @@ function handlerSignOutBtn() {
 signOutBtn.addEventListener('click', handlerSignOutBtn);
 homeBtn.addEventListener('click', handlerHomeBtn);
 libraryBtn.addEventListener('click', handlerLibraryBtn);
+
+export { handlerLibraryBtn, handlerHomeBtn };

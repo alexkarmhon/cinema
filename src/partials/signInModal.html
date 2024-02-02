@@ -1,6 +1,6 @@
-<div class="backdrop //is-hidden" data-modal-auth>
+<div class="backdrop is-hidden" id="auth-modal-backdrop" data-modal-auth>
   <div class="auth-modal">
-    <button class='auth-modal__btn-close js-movie-modal-close' aria-label='close' data-modal-registration-close>
+    <button class='auth-modal__btn-close js-movie-modal-close' id="auth-modal-close-btn" aria-label='close' data-modal-registration-close>
       <svg class="btn-close-icon" width="40" height="40">
         <use href="./images/sprite.svg#icon-close"></use>
       </svg>
@@ -29,7 +29,7 @@
           </svg>
         </span>
       </label>
-      <button class="btn" type="submit">
+      <button class="button signin-button" type="submit" id="signin-btn">
         <span>Sign in</span>
       </button>
     </form>

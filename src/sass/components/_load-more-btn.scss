@@ -1,4 +1,4 @@
-.load-more-btn {
+.button {
   display: flex;
   justify-content: center;
   width: 160px;
@@ -15,6 +15,7 @@
   background: var(--background-color);
   border-color: var(--accent-color);
   border-radius: 22px;
+  outline: none;
 
   transition: color 250ms linear, background-color 250ms linear;
 

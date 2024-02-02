@@ -71,7 +71,7 @@ function clearGallery() {
 function handlerMoreFilmsBtn() {
   loadMoreBtn.disable();
   filmsAPI.incrementPage();
-  renderFilmsGallery();
+  renderFilmsGalleryDefault();
 }
 
 async function handlerFormInput(e) {
