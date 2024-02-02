@@ -4,10 +4,7 @@ import LoadMoreBtn from './load-more-btn';
 import { errorMsg, emptyMovie } from './pnotify';
 import { showFilmModal } from './filmCardModal';
 import { parseGenresToFilm } from './functions';
-
-const filmList = document.querySelector('#film-list');
-const moreFilmsBtn = document.querySelector('#load-more-btn');
-const searchFormInput = document.querySelector('#search-form');
+import { filmList, moreFilmsBtn, searchFormInput } from './refs';
 
 const filmsAPI = new FilmsAPI();
 const loadMoreBtn = new LoadMoreBtn({

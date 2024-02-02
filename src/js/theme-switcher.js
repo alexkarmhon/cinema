@@ -1,8 +1,4 @@
-const switcher = document.querySelector('#theme-btn');
-const body = document.querySelector('body');
-
-const sun = document.querySelector('#sun');
-const moon = document.querySelector('#moon');
+import { switcher, body, sun, moon } from "./refs";
 
 const { LIGHT, DARK } = {
   LIGHT: 'light-theme',

@@ -1,20 +1,13 @@
 import { renderFilmsGalleryDefault, clearGallery } from "./filmGallery";
 import { authModalOpen, authModalClose } from "./authModal";
+import { header, homeBtn, libraryBtn, signOutBtn, searchInput, headerLibBtns } from "./refs";
 
 
 const iconLink = document.querySelector('.icon-film');
 const logoLink = document.querySelector('.logo-link');
-const homeBtn = document.querySelector('#home-btn');
-const libraryBtn = document.querySelector('#my-lib-btn');
-const header = document.querySelector('.header');
-const signOutBtn = document.querySelector('#sign-out-btn');
-const searchInput = document.querySelector('.form-wrapper');
-const headerLibBtns = document.querySelector('#h-lib-btns')
 
 
-
-
-function handlerHomeBtn() {
+function openHomePage() {
   clearGallery();
   homeBtn.classList.add('current');
   libraryBtn.classList.remove('current');
@@ -26,7 +19,7 @@ function handlerHomeBtn() {
   renderFilmsGalleryDefault();
 };
 
-function handlerLibraryBtn() {
+function openLibraryPage() {
   clearGallery();
   
   homeBtn.classList.remove('current');
@@ -39,13 +32,13 @@ function handlerLibraryBtn() {
 }
 
 function handlerSignOutBtn() {
-  handlerHomeBtn();
+  openHomePage();
 }
 
 
 
 signOutBtn.addEventListener('click', handlerSignOutBtn);
-homeBtn.addEventListener('click', handlerHomeBtn);
-libraryBtn.addEventListener('click', handlerLibraryBtn);
+homeBtn.addEventListener('click', openHomePage);
+libraryBtn.addEventListener('click', openLibraryPage);
 
-export { handlerLibraryBtn, handlerHomeBtn };
+export { openHomePage, openLibraryPage };
