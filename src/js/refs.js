@@ -22,14 +22,16 @@ const modalAuth = document.querySelector('#auth-modal-backdrop');
 const modalCloseBtn = document.querySelector('#auth-modal-close-btn');
 const modalSignInBtn = document.querySelector('#signin-btn');
 const registrationBtn = document.querySelector('#registration-btn');
+const signInForm = document.querySelector('#auth-form');
 
 // Registration Modal
 const modalReg = document.querySelector('#registration-modal-backdrop');
 const regCloseBtn = document.querySelector('#registration-modal-close-btn');
 const signUpBtn = document.querySelector('#signUp-btn');
+const regForm = document.querySelector('#reg-form');
 
 export { header, homeBtn, libraryBtn, signOutBtn, searchInput, headerLibBtns };//Header
 export { switcher, body, sun, moon };//Theme Switcher
 export { filmList, moreFilmsBtn, searchFormInput };//Film Gallery
-export { modalAuth, modalCloseBtn, modalSignInBtn, registrationBtn };//Modal SignIn
-export { modalReg, regCloseBtn, signUpBtn };//Modal Registration
+export { modalAuth, modalCloseBtn, modalSignInBtn, registrationBtn, signInForm };//Modal SignIn
+export { modalReg, regCloseBtn, signUpBtn, regForm };//Modal Registration

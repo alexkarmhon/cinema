@@ -1,6 +1,9 @@
 import "./sass/main.scss";
+import "./js/header.js";
+
+import "./js/database.js";
+import "./js/auth.js";
 
 import "./js/theme-switcher.js";
-import "./js/header.js";
 import "./js/filmGallery.js";
 import './js/myLibrary.js';

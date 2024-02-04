@@ -1,12 +1,12 @@
 <div class="backdrop is-hidden" id="auth-modal-backdrop" data-modal-auth>
   <div class="auth-modal">
-    <button class='auth-modal__btn-close js-auth-reg-modal-close' id="auth-modal-close-btn" aria-label='close' data-modal-registration-close>
+    <button class='auth-modal__btn-close js-movie-modal-close' id="auth-modal-close-btn" aria-label='close' data-modal-registration-close>
       <svg class="btn-close-icon" width="40" height="40">
         <use href="./images/sprite.svg#icon-close"></use>
       </svg>
     </button>
     <p class="modal-welcome">Welcome</p>
-    <form class="auth-form signin-form">
+    <form class="auth-form signin-form" id="auth-form">
       <label class="auth-form__field">
         <span class="auth-form__wrapper">
           <input class="auth-form__input" type="email" name="email" placeholder="e-mail" required />

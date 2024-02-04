@@ -4,17 +4,23 @@ import {
   modalAuth,
   modalCloseBtn,
   modalSignInBtn,
+  signInForm,
   registrationBtn,
   modalReg,
+  regForm,
   regCloseBtn,
   signUpBtn,
 } from './refs';
+
+import { hadlerRegistration, handlerSignIn } from './database';
 
 function authModalOpen() {
   modalAuth.classList.remove('is-hidden');
   modalCloseBtn.addEventListener('click', authModalClose);
   registrationBtn.addEventListener('click', registrationModalOpen);
   document.addEventListener('keydown', handlerEscPres);
+  document.addEventListener('click', handlerBackdropClick);
+  signInForm.addEventListener('submit', handlerSignIn);
 }
 
 function authModalClose() {
@@ -22,12 +28,14 @@ function authModalClose() {
   header.classList.remove('header-library');
   modalCloseBtn.removeEventListener('click', authModalClose);
   document.removeEventListener('keydown', handlerEscPres);
-  openHomePage();
+  document.addEventListener('click', handlerBackdropClick);
+  // openHomePage();
 }
 
 function registrationModalOpen() { 
   modalReg.classList.remove('is-hidden');
   regCloseBtn.addEventListener('click', registrationModalClose);
+  regForm.addEventListener('submit', hadlerRegistration);
 }
 
 function registrationModalClose() { 
@@ -41,9 +49,25 @@ function handlerEscPres(e) {
     return;
   };
 
-  authModalClose();
+  if (e.code === 'Escape' && modalReg.classList.contains('is-hidden')) {
+    authModalClose();
+  }
+}
+
+function handlerBackdropClick(e) {
+  if (e.target.classList.contains('backdrop') && !modalReg.classList.contains('is-hidden')) {
+    console.log(e.target);
+    registrationModalClose();
+    return;
+  }
+
+  if (e.target.classList.contains('backdrop') && !modalAuth.classList.contains('is-hidden')) {
+    console.log(e.target);
+    authModalClose();
+  }
+
 }
  
 // function onRegistration
 
-export { authModalOpen, authModalClose };
+export { authModalOpen, authModalClose, registrationModalOpen, registrationModalClose };
