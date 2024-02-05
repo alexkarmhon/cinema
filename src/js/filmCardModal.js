@@ -68,11 +68,22 @@ async function showFilmModal(e) {
     .querySelector('button[data-action="show-trailer"]')
     .addEventListener("click", showTrailer);
   
+  document
+    .querySelector('button[data-type="watchedMovies"]')
+    .addEventListener('click', handlerAddRemoveWatchedBtn);
+  
   function closeModal(e) {
       if (!isTrailerModalOpen && e.code === "Escape") {
         filmModal.close();
       }
     }
+}
+
+function handlerAddRemoveWatchedBtn(e) {
+  console.dir(e.target.parentElement.dataset);
+  const filmId = e.target.parentElement.dataset.filmId;
+  const filmTitle = e.target.parentElement.dataset.filmTitle;
+  console.log(filmId, filmTitle)
 }
 
 

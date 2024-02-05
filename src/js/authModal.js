@@ -25,11 +25,10 @@ function authModalOpen() {
 
 function authModalClose() {
   modalAuth.classList.add('is-hidden');
-  header.classList.remove('header-library');
+  // header.classList.remove('header-library');
   modalCloseBtn.removeEventListener('click', authModalClose);
   document.removeEventListener('keydown', handlerEscPres);
   document.addEventListener('click', handlerBackdropClick);
-  // openHomePage();
 }
 
 function registrationModalOpen() { 
@@ -51,23 +50,23 @@ function handlerEscPres(e) {
 
   if (e.code === 'Escape' && modalReg.classList.contains('is-hidden')) {
     authModalClose();
+    openHomePage();
   }
 }
 
 function handlerBackdropClick(e) {
   if (e.target.classList.contains('backdrop') && !modalReg.classList.contains('is-hidden')) {
-    console.log(e.target);
     registrationModalClose();
     return;
   }
 
   if (e.target.classList.contains('backdrop') && !modalAuth.classList.contains('is-hidden')) {
-    console.log(e.target);
     authModalClose();
+    openHomePage();
   }
 
 }
  
-// function onRegistration
+
 
 export { authModalOpen, authModalClose, registrationModalOpen, registrationModalClose };

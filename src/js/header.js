@@ -1,6 +1,7 @@
 import { renderFilmsGalleryDefault, clearGallery } from "./filmGallery";
 import { authModalOpen, authModalClose } from "./authModal";
 import { header, homeBtn, libraryBtn, signOutBtn, searchInput, headerLibBtns } from "./refs";
+import { handlerSignOut } from "./database";
 
 
 const iconLink = document.querySelector('.icon-film');
@@ -12,26 +13,35 @@ function openHomePage() {
   homeBtn.classList.add('current');
   libraryBtn.classList.remove('current');
   header.classList.remove('header-library');
-  signOutBtn.classList.add('visually-hidden');
-  searchInput.classList.remove('visually-hidden');
-  headerLibBtns.classList.add('visually-hidden');
   
+  searchInput.classList.remove('visually-hidden');
+  headerLibBtns.classList.add('visually-hidden');  
   renderFilmsGalleryDefault();
 };
 
 function openLibraryPage() {
-  clearGallery();
-  
+  clearGallery();  
   homeBtn.classList.remove('current');
   libraryBtn.classList.add('current');
   header.classList.add('header-library');
-  signOutBtn.classList.remove('visually-hidden');
+  
   searchInput.classList.add('visually-hidden');
   headerLibBtns.classList.remove('visually-hidden');
-  authModalOpen();
+}
+
+function handlerMyLibraryBtn() {
+  if (!header.dataset.userId) {
+    authModalOpen();
+    clearGallery();
+  }
+  if (header.dataset.userId) {
+    openLibraryPage();
+    // renderFilmsGalleryDefault();  
+  }
 }
 
 function handlerSignOutBtn() {
+  handlerSignOut();
   openHomePage();
 }
 
@@ -39,6 +49,6 @@ function handlerSignOutBtn() {
 
 signOutBtn.addEventListener('click', handlerSignOutBtn);
 homeBtn.addEventListener('click', openHomePage);
-libraryBtn.addEventListener('click', openLibraryPage);
+libraryBtn.addEventListener('click', handlerMyLibraryBtn);
 
-export { openHomePage, openLibraryPage };
+export { handlerMyLibraryBtn, openHomePage, openLibraryPage };

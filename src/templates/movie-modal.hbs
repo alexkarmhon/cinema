@@ -46,7 +46,7 @@
         {{overview}}
         </p>
       </div>
-      <div class='movie-modal__buttons'>
+      <div class='movie-modal__buttons' data-film-title="{{title}}" data-film-id="{{id}}">
         <button data-type="watchedMovies" data-action='{{#if isWatched}}remove{{else}}add{{/if}}'
           class='movie-modal__btn {{#if isWatched}}movie-modal__btn--active{{/if}} movie-modal__btn--orange'>
           {{#if isWatched}}remove from{{else}}add to{{/if}} watched
