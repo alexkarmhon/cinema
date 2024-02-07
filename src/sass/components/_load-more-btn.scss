@@ -1,15 +1,13 @@
-.button {
-  display: flex;
-  justify-content: center;
+.button,
+.button.load-more-btn {
+  @include flex-center;
+  @include font(700, 14px, 18px, 0em);
   width: 160px;
   margin: 0 auto;
   padding: 11px 25px;
 
   text-transform: uppercase;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.29;
-  letter-spacing: 0;
+ 
   color: var(--accent-color);
 
   background: var(--background-color);
@@ -30,6 +28,10 @@
       border-color: var(--primary-color);
     }
   }
+}
+
+.spinner.is-hidden {
+  display: none;
 }
 
 .loader {

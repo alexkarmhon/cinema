@@ -93,4 +93,4 @@ moreFilmsBtn.addEventListener('click', handlerMoreFilmsBtn);
 filmList.addEventListener('click', showFilmModal);
 
 
-export { renderFilmsGalleryDefault, clearGallery };
+export { renderFilmsGalleryDefault, renderFilmsGalleryByQuery, clearGallery };

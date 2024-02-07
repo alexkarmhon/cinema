@@ -47,13 +47,13 @@
         </p>
       </div>
       <div class='movie-modal__buttons' data-film-title="{{title}}" data-film-id="{{id}}">
-        <button data-type="watchedMovies" data-action='{{#if isWatched}}remove{{else}}add{{/if}}'
-          class='movie-modal__btn {{#if isWatched}}movie-modal__btn--active{{/if}} movie-modal__btn--orange'>
-          {{#if isWatched}}remove from{{else}}add to{{/if}} watched
+        <button id="add-remove-watched-btn" data-type="watchedMovies" data-action='add'
+          class='movie-modal__btn'>
+          Add to watched
         </button>
-        <button data-type="queuedMovies" data-action='{{#if isQueued}}remove{{else}}add{{/if}}'
-          class='movie-modal__btn {{#if isQueued}}movie-modal__btn--active{{/if}} movie-modal__btn--transparent'>
-          {{#if isQueued}}remove from{{else}}add to{{/if}} queue
+        <button id="add-remove-queue-btn" data-type="queuedMovies" data-action='add'
+          class='movie-modal__btn'>
+          Add to queue
         </button>
         <button class="movie-modal__btn" data-action="show-trailer" data-id="{{id}}">Trailer</button>
       </div>

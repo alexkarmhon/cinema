@@ -208,7 +208,7 @@
   color: var(--primary-color);
   transition: color 250ms linear, background-color 250ms linear;
 
-  &--active {
+  &.active {
     border: none;
     border-radius: 5px;
     background-color: var(--accent-color);
@@ -218,8 +218,8 @@
     outline: 0px;
   }
 
-  &:hover {
-    background-color: var(--accent-color);
-    border: unset;
-  }
+  // &:hover {
+  //   background-color: var(--accent-color);
+  //   border: unset;
+  // }
 }

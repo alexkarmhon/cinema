@@ -9,10 +9,11 @@ import {
   modalReg,
   regForm,
   regCloseBtn,
-  signUpBtn,
 } from './refs';
 
 import { hadlerRegistration, handlerSignIn } from './database';
+
+import { renderFilmsGalleryDefault } from './filmGallery';
 
 function authModalOpen() {
   modalAuth.classList.remove('is-hidden');
@@ -25,10 +26,10 @@ function authModalOpen() {
 
 function authModalClose() {
   modalAuth.classList.add('is-hidden');
-  // header.classList.remove('header-library');
   modalCloseBtn.removeEventListener('click', authModalClose);
   document.removeEventListener('keydown', handlerEscPres);
   document.addEventListener('click', handlerBackdropClick);
+  renderFilmsGalleryDefault();
 }
 
 function registrationModalOpen() { 

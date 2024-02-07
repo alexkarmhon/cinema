@@ -1,3 +1,6 @@
+import FilmsAPI from './filmsAPI';
+const filmsApi = new FilmsAPI();
+
 function parseGenresToFilm(arr, genres) {
   const newObjArr = arr.map(el => ({
     ...el,
@@ -14,4 +17,15 @@ function parseGenresToFilm(arr, genres) {
   return newObjArr;
 }
 
-export { parseGenresToFilm };
+function filterFilmByQuery(arr) {   
+  return arr
+    .map(async ({ film_title, film_id }) => {
+      filmsApi.query = film_title;
+      const { results } = await filmsApi.fetchFilmsByName();
+      const filtredById = results.filter(({ id }) => id === Number(film_id));
+      return filtredById;
+    })
+}
+
+export { parseGenresToFilm, filterFilmByQuery };
+

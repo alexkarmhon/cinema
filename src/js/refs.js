@@ -5,6 +5,9 @@ const libraryBtn = document.querySelector('#my-lib-btn');
 const signOutBtn = document.querySelector('#sign-out-btn');
 const searchInput = document.querySelector('.form-wrapper');
 const headerLibBtns = document.querySelector('#h-lib-btns');
+const watchedBtn = document.querySelector('#btn-watched');
+const queueBtn = document.querySelector('#btn-queue');
+
 
 // ThemeSwitcher
 const switcher = document.querySelector('#theme-btn');
@@ -30,7 +33,7 @@ const regCloseBtn = document.querySelector('#registration-modal-close-btn');
 const signUpBtn = document.querySelector('#signUp-btn');
 const regForm = document.querySelector('#reg-form');
 
-export { header, homeBtn, libraryBtn, signOutBtn, searchInput, headerLibBtns };//Header
+export { header, homeBtn, libraryBtn, signOutBtn, searchInput, headerLibBtns, watchedBtn, queueBtn };//Header
 export { switcher, body, sun, moon };//Theme Switcher
 export { filmList, moreFilmsBtn, searchFormInput };//Film Gallery
 export { modalAuth, modalCloseBtn, modalSignInBtn, registrationBtn, signInForm };//Modal SignIn
