@@ -1,10 +1,9 @@
-import { defaultModules, error, info, notice } from '@pnotify/core';
+import { defaultModules, error, info, notice, success } from '@pnotify/core';
 import '@pnotify/core/dist/PNotify.css';
 import * as PNotifyMobile from '@pnotify/mobile';
 import '@pnotify/mobile/dist/PNotifyMobile.css';
 import '@pnotify/core/dist/BrightTheme.css';
 defaultModules.set(PNotifyMobile, {});
-
 
 export {
   successfulRegistrationMsg,
@@ -17,19 +16,29 @@ export {
   registrationErrorMsg,
   emptyMovie,
   wrongRequest,
-  closeAuthModalMsg,
+  notAuthMsg,
+  addedToWathedMsg,
+  addedToQueuedMsg,
+  removedFromWatchedMsg,
+  removedFromQueuedMsg,
+  emptyWatchedMsg,
+  emptyQueuedMsg
 };
 
+// const mySuccess = success({
+//   text: "I'm a success message.",
+// });
+
 function successfulRegistrationMsg() {
-  notice({
+  success({
     text: 'Thank you for joining Filmoteka!',
     delay: 2000,
   });
 }
 
 function successfulSignInMsg() {
-  notice({
-    text: 'Welcome to Filmoteka',
+  success({
+    text: '😊 Welcome to OwnCinemateka!',
     delay: 2000,
   });
 }
@@ -41,9 +50,51 @@ function signOutMsg() {
   });
 }
 
+function addedToWathedMsg() {
+  success({
+    text: 'Added to the Watched',
+    delay: 2000,
+  });
+}
+
+function addedToQueuedMsg() {
+  success({
+    text: 'Added to the Queued',
+    delay: 2000,
+  });
+}
+
+function removedFromWatchedMsg() {
+  success({
+    text: 'Removed from the Watched',
+    delay: 2000,
+  });
+}
+
+function removedFromQueuedMsg() {
+  success({
+    text: 'Removed from the Queued',
+    delay: 2000,
+  });
+}
+
 function emptyLibraryMsg() {
   info({
     text: `There are no movies in your library!`,
+    delay: 2000,
+  });
+}
+
+function emptyWatchedMsg() {
+  info({
+    text: `There are no movies in your Watched!`,
+    delay: 2000,
+  });
+}
+
+function emptyQueuedMsg() {
+  info({
+    text: `There are no movies in your Queued!`,
     delay: 2000,
   });
 }
@@ -90,9 +141,9 @@ function wrongRequest() {
   });
 }
 
-function closeAuthModalMsg() {
+function notAuthMsg() {
   notice({
-    text: 'Please SIGN IN or REGISTER to use the Movie Library!',
+    text: 'NOT SO FAST!\nPlease SIGN IN or REGISTER to use the Movie Library!',
     delay: 2000,
   });
 }

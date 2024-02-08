@@ -90,6 +90,7 @@
 
 .modal-welcome {
   @include font(700, 18px, 22px, 0em);
+  color: var(--secondary-color);
   margin-bottom: 30px;
   text-align: center;
   text-transform: uppercase;

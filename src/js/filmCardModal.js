@@ -3,11 +3,13 @@ import movieCardTemplate from '../templates/movie-modal.hbs';
 import trailerModalTemplate from '../templates/movie-trailer-modal.hbs';
 import * as basicLightbox from 'basiclightbox';
 import '../../node_modules/basiclightbox/src/styles/main.scss';
-import { parseGenresToFilm } from './functions';
-import { header, watchedBtn, queueBtn, libraryBtn } from './refs';
+
 import { clearGallery } from './filmGallery';
+import { parseGenresToFilm } from './functions';
 import { handlerWatched, handlerQueued } from './myLibrary';
-import { addToWatchedList,removeFromWatchedList, addToQueuedList, removeFromQueuedList } from './database';
+import { header, watchedBtn, queueBtn, libraryBtn } from './refs';
+import { addToWatchedList, removeFromWatchedList, addToQueuedList, removeFromQueuedList } from './database';
+import { notAuthMsg } from './pnotifyMessages';
 
 const filmsAPI = new FilmsAPI();
 let isTrailerModalOpen = false;
@@ -74,7 +76,7 @@ async function showFilmModal(e) {
   
     if (e.target.dataset.type === 'watchedMovies' && e.target.dataset.action === 'add') {
       if (!user) {
-        console.log("Not true. You must to sign in to add ");
+        notAuthMsg();
         return;
       }
       addToWatchedList(filmObj);
@@ -83,7 +85,7 @@ async function showFilmModal(e) {
   
     if (e.target.dataset.type === 'queuedMovies' && e.target.dataset.action === 'add') {
       if (!user) {
-        console.log("Not true. You must to sign in to add ");
+        notAuthMsg();
         return;
       }
       addToQueuedList(filmObj);

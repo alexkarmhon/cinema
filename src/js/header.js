@@ -1,6 +1,6 @@
 import { renderFilmsGalleryDefault, clearGallery } from "./filmGallery";
 import { authModalOpen, authModalClose } from "./authModal";
-import { header, homeBtn, libraryBtn, signOutBtn, searchInput, headerLibBtns } from "./refs";
+import { header, logotype, homeBtn, libraryBtn, signOutBtn, searchInput, headerLibBtns } from "./refs";
 import { handlerSignOut } from "./database";
 
 
@@ -45,8 +45,12 @@ function handlerSignOutBtn() {
   openHomePage();
 }
 
+function refreshPage() {
+  location.reload();
+}
 
 
+logotype.addEventListener('click', refreshPage);
 signOutBtn.addEventListener('click', handlerSignOutBtn);
 homeBtn.addEventListener('click', openHomePage);
 libraryBtn.addEventListener('click', handlerMyLibraryBtn);

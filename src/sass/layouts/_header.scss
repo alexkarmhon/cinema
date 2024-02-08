@@ -76,6 +76,11 @@
   background: rgba(0, 0, 0, 0.26);
 }
 
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .icon-film {
   width: 24px;
   height: 24px;
@@ -91,6 +96,26 @@
     color: var(--primary-color);
     @include font(500, 30px, 35px, 0em);
   }
+}
+
+
+.linear-wipe {
+  font-weight: 700;
+  background: linear-gradient(to right, #FFF 20%, #FF0 40%, #FF0 60%, #FFF 80%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: shine 2500ms linear infinite;
+  animation: shine 2500ms linear infinite;
+}
+
+@-webkit-keyframes shine {
+  to {background-position: 150% center;}
+}
+
+@keyframes shine {
+  to {background-position: 150% center;}
 }
 
 .nav-bar-wrapper {

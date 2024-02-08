@@ -2,33 +2,44 @@
 import { initializeApp } from 'firebase/app';
 
 import {
-  getFirestore,
-  collection,
-  getDoc,
   doc,
+  getDoc,
   setDoc,
   updateDoc,
+  collection,
   arrayUnion,
   arrayRemove,
-  collectionGroup,
-  query,
-  where,
-  getDocs,
+  getFirestore,
 } from 'firebase/firestore';
 
 import {
+  signOut,
   getAuth,
   onAuthStateChanged,
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signOut,
+  createUserWithEmailAndPassword,
 } from 'firebase/auth';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
+import {
+  errorMsg,
+  signOutMsg,
+  authErrorMsg,
+  successfulSignInMsg,
+  registrationErrorMsg,
+  successfulRegistrationMsg,
+  addedToWathedMsg,
+  addedToQueuedMsg,
+  removedFromWatchedMsg,
+  removedFromQueuedMsg,
+  emptyWatchedMsg,
+  emptyQueuedMsg
+} from './pnotifyMessages';
+
+import { openLibraryPage } from './header';
+import { header, signOutBtn, regForm, signInForm } from './refs';
 import { registrationModalClose, authModalClose } from './authModal';
-import { openLibraryPage, openHomePage } from './header';
-import { header, signOutBtn } from './refs';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -46,7 +57,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-console.dir(auth);
 
 const usersRef = collection(db, 'users');
 
@@ -64,7 +74,10 @@ async function addToWatchedList(obj) {
     await updateDoc(doc(db, 'users', `${header.dataset.userId}`), {
       watched: arrayUnion(obj),
     });
+
+    addedToWathedMsg();
   } catch (error) {
+    errorMsg();
     console.log(error);
   }
 }
@@ -74,7 +87,10 @@ async function removeFromWatchedList(obj) {
     await updateDoc(doc(db, 'users', `${header.dataset.userId}`), {
       watched: arrayRemove(obj),
     });
+
+    removedFromWatchedMsg();
   } catch (error) {
+    errorMsg();
     console.log(error);
   }
 }
@@ -84,7 +100,10 @@ async function addToQueuedList(obj) {
     await updateDoc(doc(db, 'users', `${header.dataset.userId}`), {
       queued: arrayUnion(obj),
     });
+
+    addedToQueuedMsg();
   } catch (error) {
+    errorMsg();
     console.log(error);
   }
 }
@@ -94,7 +113,10 @@ async function removeFromQueuedList(obj) {
     await updateDoc(doc(db, 'users', `${header.dataset.userId}`), {
       queued: arrayRemove(obj),
     });
+
+    removedFromQueuedMsg();
   } catch (error) {
+    errorMsg();
     console.log(error);
   }
 }
@@ -103,8 +125,15 @@ async function getWatchedList() {
   try {
     const response = await getDoc(doc(db, 'users', `${header.dataset.userId}`));
     const data = response.data();
+
+    if (data.queued.length === 0) {
+      emptyWatchedMsg();
+      return;
+    };
+    
     return data.watched;
   } catch (error) {
+    errorMsg();
     console.log(error);
   }
 }
@@ -113,8 +142,15 @@ async function getQueuedList() {
   try {
     const response = await getDoc(doc(db, 'users', `${header.dataset.userId}`));
     const data = response.data();
+
+    if (data.queued.length === 0) {
+      emptyQueuedMsg();
+      return;
+    };
+
     return data.queued;
   } catch (error) {
+    errorMsg();
     console.log(error);
   }
 }
@@ -132,17 +168,19 @@ async function hadlerRegistration(e) {
     createUserStorage(newUser.user.uid, email);
     console.log('Registration success');
     console.log(newUser);
-
+    regForm.reset();
     registrationModalClose();
-    const user_id = newUser.user.uid;
-    console.log(user_id);
+    successfulRegistrationMsg();
   } catch (error) {
     if (error.code === 'auth/email-already-in-use') {
-      console.log('That email adress is already in use');
+      registrationErrorMsg('That email adress is already in use');
+      return;
     }
     if (error.code === 'auth/invalid-email') {
-      console.log('That email adress is invalid');
+      registrationErrorMsg('That email adress is invalid');
+      return;
     }
+    errorMsg();
   }
 }
 
@@ -155,22 +193,23 @@ async function handlerSignIn(e) {
 
   try {
     await signInWithEmailAndPassword(auth, email, password);
-
     authModalClose();
+    signInForm.reset();
     openLibraryPage();
-    onAuthStateChanged();
 
-    console.log('Welcome user');
+    onAuthStateChanged();
   } catch (error) {
     if (error.code === 'auth/invalid-credential') {
       console.log('Wrong email or password!');
       console.log(error.code);
+      authErrorMsg();
     }
   }
 }
 
 onAuthStateChanged(auth, user => {
   if (user) {
+    successfulSignInMsg();
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
     const uid = user.uid;
@@ -188,7 +227,7 @@ onAuthStateChanged(auth, user => {
 
 async function handlerSignOut() {
   await signOut(auth);
-  console.log('Good Bye!');
+  signOutMsg();
 }
 
 export {

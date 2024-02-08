@@ -8,29 +8,41 @@ import { parseGenresToFilm, filterFilmByQuery } from './functions';
 const filmsApi = new FilmsAPI();
 
 async function handlerWatched() {
-  const list = await getWatchedList();
-  const watchedList = list.map(el => JSON.parse(el));
-  const films = filterFilmByQuery(watchedList);
+  try {
+    const list = await getWatchedList();
+    const watchedList = list.map(el => JSON.parse(el));
+    const films = filterFilmByQuery(watchedList);
 
-  const responses = await Promise.allSettled(films);
-  const watchedGallaryList = responses.filter(({ status }) => status === "fulfilled").map(({ value }) => value[0]);
+    const responses = await Promise.allSettled(films);
+    const watchedGallaryList = responses
+      .filter(({ status }) => status === 'fulfilled')
+      .map(({ value }) => value[0]);
 
-  const genres = await filmsApi.fetchGenres();
-  const parsedCards = parseGenresToFilm(watchedGallaryList, genres);
-  filmList.insertAdjacentHTML('beforeend', movieCardTemplate(parsedCards));
+    const genres = await filmsApi.fetchGenres();
+    const parsedCards = parseGenresToFilm(watchedGallaryList, genres);
+    filmList.insertAdjacentHTML('beforeend', movieCardTemplate(parsedCards));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function handlerQueued() {
-  const list = await getQueuedList();
-  const queuedList = list.map(el => JSON.parse(el));
-  const films = filterFilmByQuery(queuedList);
+  try {
+    const list = await getQueuedList();
+    const queuedList = list.map(el => JSON.parse(el));
+    const films = filterFilmByQuery(queuedList);
 
-  const responses = await Promise.allSettled(films);
-  const queuedGallaryList = responses.filter(({ status }) => status === "fulfilled").map(({ value }) => value[0]);
+    const responses = await Promise.allSettled(films);
+    const queuedGallaryList = responses
+      .filter(({ status }) => status === 'fulfilled')
+      .map(({ value }) => value[0]);
 
-  const genres = await filmsApi.fetchGenres();
-  const parsedCards = parseGenresToFilm(queuedGallaryList, genres);
-  filmList.insertAdjacentHTML('beforeend', movieCardTemplate(parsedCards));
+    const genres = await filmsApi.fetchGenres();
+    const parsedCards = parseGenresToFilm(queuedGallaryList, genres);
+    filmList.insertAdjacentHTML('beforeend', movieCardTemplate(parsedCards));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function handlerLibsBtns(e) {

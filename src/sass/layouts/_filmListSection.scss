@@ -8,7 +8,8 @@
   }
 }
 
-.card-section__container {
+.card-section > .container {
+  position: relative;
   margin: 0 auto;
 }
 
@@ -66,6 +67,38 @@
   background-color: var(--accent-color);
 }
 
-.movie-modal__desc{
+.up-btn {
+  position: fixed;
+  top: 80vh;
+  right: calc(5%);
+
+  padding: 0;
+  outline: none;
+  border-style: none;
+  border-radius: 50%;
+  height: 28px;
+  @include flex-center;
+  display: none;
+  z-index: 0;
+  cursor: pointer;
+
+
+  @media screen and (min-width: 768px) {
+    right: calc(10vw - 25px);
+  }
   
+  @media screen and (min-width: 1024px) {
+    right: calc(10vw - 55px);
+  }
 }
+.up-btn:hover {
+  background-color: var(--accent-color);
+}
+
+.icon {
+  fill:var(--accent-color);
+}
+.icon:hover {
+  fill: var(--primary-color);
+}
+
