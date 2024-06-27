@@ -1,5 +1,5 @@
 const BASE_URL = "https://api.themoviedb.org/3/";
-const API_KEY = "2c427feded2caae0e1aa5b84b18ff5a9";
+const API_KEY = "731c7b3379fea632246b8641f52e562a";
 const END_POINT = "trending/movie/day";
 const SEARCH_END_POINT = 'search/movie';
 const GENRES_END_POINT = 'genre/movie/list';
