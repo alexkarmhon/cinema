@@ -42,15 +42,25 @@ import { header, signOutBtn, regForm, signInForm } from './refs';
 import { registrationModalClose, authModalClose } from './authModal';
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyCsfd-3fBAf5f-FVpWSftabVrr0pR9i2Nw',
+//   authDomain: 'cinemateka-91cd3.firebaseapp.com',
+//   databaseURL:
+//     'https://cinemateka-91cd3-default-rtdb.europe-west1.firebasedatabase.app/',
+//   projectId: 'cinemateka-91cd3',
+//   storageBucket: 'cinemateka-91cd3.appspot.com',
+//   messagingSenderId: '547856263466',
+//   appId: '1:547856263466:web:6a175dec43543ff2171653',
+// };
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyCsfd-3fBAf5f-FVpWSftabVrr0pR9i2Nw',
-  authDomain: 'cinemateka-91cd3.firebaseapp.com',
-  databaseURL:
-    'https://cinemateka-91cd3-default-rtdb.europe-west1.firebasedatabase.app/',
-  projectId: 'cinemateka-91cd3',
-  storageBucket: 'cinemateka-91cd3.appspot.com',
-  messagingSenderId: '547856263466',
-  appId: '1:547856263466:web:6a175dec43543ff2171653',
+  apiKey: "AIzaSyD7JTjWcT71UBKZ77FEgs5tVf1c3f-YOPo",
+  authDomain: "filmsite-378c8.firebaseapp.com",
+  projectId: "filmsite-378c8",
+  storageBucket: "filmsite-378c8.appspot.com",
+  messagingSenderId: "644034043980",
+  appId: "1:644034043980:web:b3cbfe790cabe202ded4e9",
+  measurementId: "G-W6LKKHPRLJ"
 };
 
 // Initialize Firebase
